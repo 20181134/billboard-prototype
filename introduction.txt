@@ -1,0 +1,9 @@
+関数の説明
+$_SESSION['user'] ログイン情報・ユーザーのデータを格納
+    ['user']['username']にユーザー名を格納
+    ['user']['profilelink']に個々人のプロフィールのリンクを格納
+    ['user']['profilepic']にユーザーのアバターを格納
+    ['user']['id']にユーザーIDを格納
+
+データベース: Tweet 
+    テーブル: userid
