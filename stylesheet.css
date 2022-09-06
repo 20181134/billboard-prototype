@@ -1,0 +1,17 @@
+body {
+    background-color: 000000;
+    color: #22e0ff;
+    text-shadow: 0 -40px 100px, 0 0 2px, 0 0 1em #fff, 0 0 0.5em #fff, 0 0 0.1em #fff, 0 10px 3px #000;
+}
+br {
+    display: block;
+    content: "";
+    margin: 2px, 0;
+}
+.topbar {
+    float: left;
+}
+.sort {
+    white-space: nowrap;
+    float: right;
+}
