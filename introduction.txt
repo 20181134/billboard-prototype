@@ -6,4 +6,14 @@ $_SESSION['user'] ログイン情報・ユーザーのデータを格納
     ['user']['id']にユーザーIDを格納
 
 データベース: Tweet 
-    テーブル: userid
+    テーブル: userdata
+        userid
+        username
+        password
+        profilepage
+    テーブル: tweets
+        id
+        contents
+        uploader 
+        avatar
+        time

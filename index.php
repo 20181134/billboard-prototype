@@ -5,6 +5,7 @@
         <link rel="stylesheet" href="stylesheet.css">
         <?php
         session_start();
+        $pdo = new PDO('mysql:host=localhost;dbname=tweet;charset=utf8;', 'admin', 'password');
         ?>
     </head>
     <body>
@@ -12,7 +13,7 @@
             <div class="logo">
                 <h2>Prototype</h2>
                 <a class="headerlinks" href="./index.html">Home</a>
-                <a class="headerlinks" href="">Profile</a>
+                <a class="headerlinks" href="./profile.php">Profile</a>
                 <a class="headerlinks" href="">Private Messages</a>
             </div>
             <div class="search">
@@ -49,12 +50,13 @@
                     <div class="moreinfo">
                         <?php
                         if (isset($_SESSION['user'])) {
-                            $pdo = new PDO('mysql:host=localhost;dbname=tweet;charset=utf8;', 'admin', 'password');
-                            $sql = 'SELECT COUNT(*) as cnt FROM tweet';
+                            $sql = 'SELECT COUNT(*) as cnt FROM userdata';
                             $rs = mysql_query($sql);
                             $row = mysql_fetch_assoc($rs);
                             $count = $row['cnt'];
                             echo '<p class="desc">Tweets: ', $count;
+                        } else {
+                            echo '<a href="./signin.php">Sign In</a> or <a href="./createaccount.php">Create a new account</a> to join now!';
                         }
                         ?>
                         <!-- 
@@ -65,9 +67,26 @@
                 </div>
                 <div class="tl">
                     <p class="title2">What's Happening?</p>
-                    <textarea></textarea>
-                    <input type="submit" value="tweet"><hr class="division">
+                    <form action="" method="post">
+                        <textarea name="new-tweet"></textarea>
+                        <input type="submit" value="tweet"><hr class="division">
+                    </form>
                         <div class="timeline">
+                            <?php
+                            $timeline = $pdo->query('SELECT * FROM tweets');
+                            foreach ($timeline as $row) {
+                                echo '<div class="tweet">';
+                                echo '<img src="', $row['avatar'], '" class="avatar1">';
+                                echo '<div class="cont">';
+                                echo '<b class="username">', $row['uploader'], '</b>';
+                                echo '<p class="contents1">', $row['contents'], '</p>';
+                                echo '<p class="time">', $row['time'], '</p>';
+                                echo '</div>';
+                                echo '</div>';
+                                echo '<hr class="division">';
+                            }
+                            ?>
+                            <!--
                             <div class="tweet">
                                 <img src="avatar1.jpg" class="avatar1">
                                 <div class="cont">
@@ -85,6 +104,19 @@
                                     <p class="time">13:48:38 9/6/2022</p>
                                 </div>
                             </div>
+                            -->
+                            <?php
+                            if ($SERVER['REQUEST_METHOD'] == "POST") {
+                                date_default_timezone_set('Asia/Tokyo');
+                                $stmt = $pdo->prepare('INSERT INTO tweets values(?, ?, ?, ?, ?)');
+                                if ($stmt->execute($_SESSION['user']['id'], $_REQUEST['new-tweet'], $_SESSION['user']['username'], $_SESSION['user']['profilepic'], date('Y-m-d H:i:s'))) {
+                                    header('Location: ./index.php');
+                                    exit();
+                                } else {
+                                    echo 'Something went wrong';
+                                }
+                            }
+                            ?>
                         </div>
                 </div>
             </div>
