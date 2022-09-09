@@ -1,6 +1,6 @@
 drop database if exists tweet;
 create database tweet character set utf8 collate utf8_general_ci;
-grant all on tweet.* to 'admin'@'localhost' identified as 'password';
+grant all on tweet.* to 'admin'@'localhost' identified by 'password';
 use tweet;
 
 create table userdata (
