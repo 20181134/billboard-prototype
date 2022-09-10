@@ -6,7 +6,9 @@
     </head>
     <body>
         <?php
-        
+        session_start();
+        unset ($_SESSION['user']);
+        $pdo = new PDO('mysql:host=localhost;')
         ?>
     </body>
 </html>

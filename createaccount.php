@@ -36,8 +36,8 @@
                 <div class="tl">
                     <h2>Create a new account</h2>
                     <form action="account-output.php" method="post">
-                        <input type="text" name="username"><br>
-                        <input type="password" name="password"><br>
+                        Username: <input type="text" name="username"><br>
+                        Password: <input type="password" name="password"><br>
                         <input type="submit" value="Register">
                     </form>
                 </div>
