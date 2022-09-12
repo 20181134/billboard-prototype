@@ -3,6 +3,7 @@ create database tweet character set utf8 collate utf8_general_ci;
 grant all on tweet.* to 'admin'@'localhost' identified by 'password';
 use tweet;
 
+-- varchar -> text
 create table userdata (
     userid int auto_increment primary key,
     username varchar(30) not null,
