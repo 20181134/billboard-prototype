@@ -16,7 +16,7 @@
             if (!file_exists('avatar')) {
                 mkdir('avatar');
             }
-            $file = 'avatar/'.basename($_FILES['avatar']['tmp_name']);
+            $file = 'avatar/'.basename($_FILES['avatar']['tmp_name']).'.png';
             if (move_uploaded_file($_FILES['avatar']['tmp_name'], $file)) {
                 // 個人ページを作成
                 $stmt->execute(null, $_REQUEST['username'], $_REQUEST['password'], $file, null);
