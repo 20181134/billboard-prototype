@@ -10,6 +10,7 @@ $_SESSION['user'] ログイン情報・ユーザーのデータを格納
         userid
         username
         password
+        avatar
         profilepage
     テーブル: tweets
         id

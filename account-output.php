@@ -18,20 +18,28 @@
             }
             $file = 'avatar/'.basename($_FILES['avatar']['tmp_name']).'.png';
             if (move_uploaded_file($_FILES['avatar']['tmp_name'], $file)) {
-                // 個人ページを作成
-                $stmt->execute(null, $_REQUEST['username'], $_REQUEST['password'], $file, null);
-            $sql = $pdo->prepare('SELECT * FROM userdata where username=? and password=?');
-            $sql->execute($_REQUEST['username'], $_REQUEST['password']);
-            foreach ($sql as $row) {
-                $_SESSION['user']=[
-                    'username'=>$row['username'],
-                    'profilepic'=>$row['profilepic'],
-                    'id'=>$row['userid'],
-                    'profilelink'=>$row['profilepage']
-                ];
-            }
-                header('Location: ./index.php');
-                exit;
+                // 個人ページを作成 profilepageの値は現在nullに設定
+                if ($stmt->execute(null, $_REQUEST['username'], $_REQUEST['password'], $file, null)) {
+                echo 'データを追加';
+                } else {
+                    print_r ($stmt -> errorInfo());
+                }
+                $sql = $pdo->prepare('SELECT * FROM userdata where username=? and password=?');
+                if ($sql->execute($_REQUEST['username'], $_REQUEST['password'])) {
+                    foreach ($sql as $row) {
+                        $_SESSION['user']=[
+                            'username'=>$row['username'],
+                            'profilepic'=>$row['profilepic'],
+                            'id'=>$row['userid'],
+                            'profilelink'=>$row['profilepage']
+                        ];
+                    }
+                    echo 'SQL success';
+                } else {
+                    print_r ();
+                }
+                // header('Location: ./index.php');
+                // exit;
             } else {
                 echo 'Something went wrong';
             }
