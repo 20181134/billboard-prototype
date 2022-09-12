@@ -1,12 +1,8 @@
 <html>
     <head>
         <meta charset="utf-8">
-        <title>Prototype</title>
+        <title></title>
         <link rel="stylesheet" href="stylesheet.css">
-        <?php
-        session_start();
-        $pdo = new PDO('mysql:host=localhost;dbname=tweet;charset=utf8;', 'admin', 'password');
-        ?>
     </head>
     <body>
         <header>
@@ -19,7 +15,7 @@
             <div class="search">
                 <?php
                 if (isset($_SESSION['user'])) {
-                    echo 'Signed in as <a href="', $_SESSION['user']['profilelink'], '">', $_SESSION['user']['username'], '</a>';
+                    echo 'Signed in as <a href="./signout.php">', $_SESSION['user']['username'], '</a>';
                 } else {
                     echo '<a href="./signin.php">Sign In</a>';
                 }
@@ -30,20 +26,16 @@
         </header>
         <main>
             <div class="contents">
-                <div class="information">
-                    <p>Create a new account</p>
-                </div>
+                <div class="information"></div>
                 <div class="tl">
-                    <h2>Create a new account</h2>
-                    <form action="account-output.php" method="post" enctype="multipart/form-data">
+                    <p>Sign In</p>
+                    <form action="signin-output.php">
                         Username: <input type="text" name="username"><br>
-                        Password: <input type="password" name="password"><br>
-                        Avatar: <input type="file" name="avatar"><br>
-                        <input type="submit" value="Register">
+                        Password: <input type="text" name="password"><br>
+                        <input type="submit" value="Sign In">
                     </form>
                 </div>
             </div>
         </main>
-        <footer></footer>
     </body>
 </html>

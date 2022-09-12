@@ -12,14 +12,14 @@
         <header>
             <div class="logo">
                 <h2>Prototype</h2>
-                <a class="headerlinks" href="./index.html">Home</a>
+                <a class="headerlinks" href="./index.php">Home</a>
                 <a class="headerlinks" href="./profile.php">Profile</a>
                 <a class="headerlinks" href="">Private Messages</a>
             </div>
             <div class="search">
                 <?php
                 if (isset($_SESSION['user'])) {
-                    echo 'Signed in as <a href="', $_SESSION['user']['profilelink'], '">', $_SESSION['user']['username'], '</a>';
+                    echo 'Signed in as <a href="./signout.php">', $_SESSION['user']['username'], '</a>';
                 } else {
                     echo '<a href="./signin.php">Sign In</a>';
                 }
@@ -35,7 +35,7 @@
                     <p class="titletext">Your Account</p>
                     <div class="account-info">
                         <?php
-                        if (isset($SESSION_['user'])) {
+                        if (isset($_SESSION['user'])) {
                             echo '<img src="', $_SESSION['user']['profilepic'], '" class="prof">';
                             echo '<p class="user">', $_SESSION['user']['username'], '</p>';
                         } else {
@@ -55,8 +55,6 @@
                             $row = mysql_fetch_assoc($rs);
                             $count = $row['cnt'];
                             echo '<p class="desc">Tweets: ', $count;
-                        } else {
-                            echo '<a href="./signin.php">Sign In</a> or <a href="./createaccount.php">Create a new account</a> to join now!';
                         }
                         ?>
                         <!-- 

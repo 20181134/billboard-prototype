@@ -29,7 +29,7 @@
                     foreach ($sql as $row) {
                         $_SESSION['user']=[
                             'username'=>$row['username'],
-                            'profilepic'=>$row['profilepic'],
+                            'profilepic'=>$row['avatar'],
                             'id'=>$row['userid'],
                             'profilelink'=>$row['profilepage']
                         ];
@@ -38,8 +38,8 @@
                 } else {
                     print_r ($sql -> errorInfo());
                 }
-                // header('Location: ./index.php');
-                // exit;
+                header('Location: ./index.php');
+                exit;
             } else {
                 echo 'Something went wrong';
             }
