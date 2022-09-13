@@ -17,5 +17,6 @@ create table tweets (
     contents varchar(250) not null,
     uploader varchar(30) not null,
     avatar varchar(30) not null,
-    time varchar(30) not null
+    time varchar(30) not null,
+    userid varchar(30) not null
 );

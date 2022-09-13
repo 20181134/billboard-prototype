@@ -29,8 +29,10 @@
             </div>
         </header>
         <main>
-            <p>Sign Out</p><br>
-            <a href="./signout-output.php">Sign Out</a>
+            <div class="signout">
+                <p>Sign Out</p><br>
+                <a href="./signout-output.php">Sign Out</a>
+            </div>
         </main>
     </body>
 </html>

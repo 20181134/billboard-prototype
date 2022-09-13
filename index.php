@@ -35,7 +35,9 @@
                     <p class="titletext">Your Account</p>
                     <?php
                     if (!isset($_SESSION['user'])) {
+                        echo '<div class="infobar1">';
                         echo '<a href="./signin.php">Sign In</a> or <a href="createaccount.php">Create a new account</a> and tweet now!';
+                        echo '</div>';
                     }
                     ?>
                     <div class="account-info">
@@ -52,13 +54,14 @@
                     </div>
                     <div class="moreinfo">
                         <?php
-                        if (isset($_SESSION['user'])) {
-                            $sql = 'SELECT COUNT(*) as cnt FROM userdata';
-                            $rs = mysql_query($sql);
-                            $row = mysql_fetch_assoc($rs);
-                            $count = $row['cnt'];
-                            echo '<p class="desc">Tweets: ', $count;
-                        }
+                        // Tweet数カウント 一時非表示
+                        //if (isset($_SESSION['user'])) {
+                        //    $sql = 'SELECT COUNT(*) as cnt FROM userdata';
+                        //    $rs = mysql_query($sql);
+                        //    $row = mysql_fetch_assoc($rs);
+                        //    $count = $row['cnt'];
+                        //    echo '<p class="desc">Tweets: ', $count;
+                        //}
                         ?>
                         <!-- 
                         <p class="desc">Tweets: 5</p>
@@ -70,8 +73,9 @@
                     <p class="title2">What's Happening?</p>
                     <form action="" method="post">
                         <textarea name="new-tweet"></textarea>
-                        <input type="submit" value="tweet"><hr class="division">
+                        <input type="submit" value="tweet">
                     </form>
+                    <hr class="division">
                         <div class="timeline">
                             <?php
                             $timeline = $pdo->query('SELECT * FROM tweets');
@@ -108,16 +112,17 @@
                             -->
                             <?php
                             // ここから下はあとでコメントアウト解除
-                            // if ($_SERVER['REQUEST_METHOD'] == "POST") {
-                            //    date_default_timezone_set('Asia/Tokyo');
-                            //    $stmt = $pdo->prepare('INSERT INTO tweets values(?, ?, ?, ?, ?)');
-                            //    if ($stmt->execute($_SESSION['user']['id'], $_REQUEST['new-tweet'], $_SESSION['user']['username'], $_SESSION['user']['profilepic'], date('Y-m-d H:i:s'))) {
-                            //        header('Location: ./index.php');
-                            //        exit();
-                            //    } else {
-                            //        echo 'Something went wrong';
-                            //    }
-                            // }
+                            if ($_SERVER['REQUEST_METHOD'] == "POST") {
+                                date_default_timezone_set('Asia/Tokyo');
+                                $stmt = $pdo->prepare('INSERT INTO tweets values(?, ?, ?, ?, ?, ?)');
+                                if ($stmt->execute([null, $_REQUEST['new-tweet'], $_SESSION['user']['username'], $_SESSION['user']['profilepic'], date('Y-m-d H:i:s'), $_SESSION['user']['id']])) {
+                                    header('Location: ./index.php');
+                                    exit();
+                                } else {
+                                    echo 'Something went wrong<br>';
+                                    print_r ($stmt -> errorInfo());
+                                }
+                            }
                             ?>
                         </div>
                 </div>

@@ -7,14 +7,15 @@ $_SESSION['user'] ログイン情報・ユーザーのデータを格納
 
 データベース: Tweet 
     テーブル: userdata
-        userid
+        userid (auto_increment)
         username
         password
         avatar
         profilepage
     テーブル: tweets
-        id
+        id (auto_increment)
         contents
         uploader 
         avatar
         time
+        userid
