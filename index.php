@@ -33,13 +33,16 @@
             <div class="contents">
                 <div class="information">
                     <p class="titletext">Your Account</p>
+                    <?php
+                    if (!isset($_SESSION['user'])) {
+                        echo '<a href="./signin.php">Sign In</a> or <a href="createaccount.php">Create a new account</a> and tweet now!';
+                    }
+                    ?>
                     <div class="account-info">
                         <?php
                         if (isset($_SESSION['user'])) {
                             echo '<img src="', $_SESSION['user']['profilepic'], '" class="prof">';
                             echo '<p class="user">', $_SESSION['user']['username'], '</p>';
-                        } else {
-                            echo '<a href="./signin.php">Sign In</a> or <a href="createaccount.php">Create a new account</a> and tweet now!';
                         }
                         ?>
                         <!--
@@ -104,6 +107,7 @@
                             </div>
                             -->
                             <?php
+                            // ここから下はあとでコメントアウト解除
                             // if ($_SERVER['REQUEST_METHOD'] == "POST") {
                             //    date_default_timezone_set('Asia/Tokyo');
                             //    $stmt = $pdo->prepare('INSERT INTO tweets values(?, ?, ?, ?, ?)');
