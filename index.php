@@ -104,16 +104,16 @@
                             </div>
                             -->
                             <?php
-                            if ($SERVER['REQUEST_METHOD'] == "POST") {
-                                date_default_timezone_set('Asia/Tokyo');
-                                $stmt = $pdo->prepare('INSERT INTO tweets values(?, ?, ?, ?, ?)');
-                                if ($stmt->execute($_SESSION['user']['id'], $_REQUEST['new-tweet'], $_SESSION['user']['username'], $_SESSION['user']['profilepic'], date('Y-m-d H:i:s'))) {
-                                    header('Location: ./index.php');
-                                    exit();
-                                } else {
-                                    echo 'Something went wrong';
-                                }
-                            }
+                            // if ($_SERVER['REQUEST_METHOD'] == "POST") {
+                            //    date_default_timezone_set('Asia/Tokyo');
+                            //    $stmt = $pdo->prepare('INSERT INTO tweets values(?, ?, ?, ?, ?)');
+                            //    if ($stmt->execute($_SESSION['user']['id'], $_REQUEST['new-tweet'], $_SESSION['user']['username'], $_SESSION['user']['profilepic'], date('Y-m-d H:i:s'))) {
+                            //        header('Location: ./index.php');
+                            //        exit();
+                            //    } else {
+                            //        echo 'Something went wrong';
+                            //    }
+                            // }
                             ?>
                         </div>
                 </div>

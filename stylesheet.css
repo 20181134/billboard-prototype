@@ -66,8 +66,9 @@ main {
     text-align:center;
 }
 .account-info {
-    display:flex;
-    align-items:center;
+    /* display:flex; */
+    /* align-items:center; */
+    margin:10px;
 }
 textarea {
     resize:none;
