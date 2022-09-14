@@ -34,12 +34,21 @@
                             'profilelink'=>$row['profilepage']
                         ];
                     }
-                    echo 'SQL success';
+                    echo 'SQL success!';
+                    // ここからテスト
+                    if (!file_exists('user')) {
+                        mkdir('user');
+                    }
+                    $user = file_get_contents('./profile.txt');
+                    $user = str_replace('insert_avatar_here', '../'.$_SESSION['user']['profilepic'], $user);
+                    $user = str_replace('insert_username_here', $_SESSION['user']['username'], $user);
+                    file_put_contents('./user/'.$_SESSION['user']['username'].'.php', $user);
+                    // ここまで
                 } else {
                     print_r ($sql -> errorInfo());
                 }
                 header('Location: ./index.php');
-                exit;
+                exit();
             } else {
                 echo 'Something went wrong';
             }
