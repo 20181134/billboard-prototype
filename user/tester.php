@@ -8,18 +8,19 @@
         <header>
             <div class="logo">
                 <h2>Prototype</h2>
-                <a class="headerlinks" href="./index.php">Home</a>
-                <a class="headerlinks" href="./profile.php">Profile</a>
+                <a class="headerlinks" href="../index.php">Home</a>
+                <a class="headerlinks" href="../profile.php">Profile</a>
                 <a class="headerlinks" href="">Private Messages</a>
             </div>
             <div class="search">
-                <!--<?php
+                <?php
+                session_start();
                 if (isset($_SESSION['user'])) {
-                    echo 'Signed in as <a href="./signout.php">', $_SESSION['user']['username'], '</a>';
+                    echo 'Signed in as <a href="../signout.php">', $_SESSION['user']['username'], '</a>';
                 } else {
-                    echo '<a href="./signin.php">Sign In</a>';
+                    echo '<a href="../signin.php">Sign In</a>';
                 }
-                ?>-->
+                ?>
                 <!-- Signed in as <a href="">Example</a> -->
                 <input type="text" name="search" placeholder="Search">
                 <input type="submit" value="Search">
@@ -30,7 +31,7 @@
                 <div class="information">
                     <p class="titletext">Account Info</p>
                     <div class="account-info">
-                        <img src="avatar/php3Gx36f.png" class="prof">
+                        <img src="../avatar/php3Gx36f.png" class="prof">
                         <p class="user">tester</p>
                     </div>
                     <div class="moreinfo">
@@ -65,11 +66,13 @@
                         <hr class="division">
                         -->
                         <?php
-                        session_start();
                         $path = __FILE__;
+                        //echo basenmae($path);
+                        $path2 = basename($path);
+                        $path2 = str_replace('.php', '', $path2);
                         $pdo = new PDO('mysql:host=localhost;dbname=tweet;charset=utf8', 'admin', 'password');
-                        $stmt = $pdo->prepare('SELECT * FROM tweets where username=?');
-                        if ($stmt->execute([basename($path)])) {
+                        $stmt = $pdo->prepare('SELECT * FROM tweets where uploader=?');
+                        if ($stmt->execute([$path2])) {
                             foreach ($stmt as $row) {
                                 echo '<div class="tweet">';
                                 echo '<img class="avatar1" src="', $row['avatar'], '">';
@@ -81,6 +84,8 @@
                                 echo '</div>';
                                 echo '<hr class="division">';
                             }
+                        } else {
+                            print_r ($stmt -> errorInfo());
                         }
                         ?>
                     </div>
