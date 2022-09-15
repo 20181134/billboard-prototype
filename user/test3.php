@@ -31,8 +31,8 @@
                 <div class="information">
                     <p class="titletext">Account Info</p>
                     <div class="account-info">
-                        <img src="insert_avatar_here" class="prof">
-                        <p class="user">insert_username_here</p>
+                        <img src="../avatar/phpzHmkbB.png" class="prof">
+                        <p class="user">test3</p>
                     </div>
                     <div class="moreinfo">
                         <!--

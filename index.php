@@ -112,24 +112,27 @@
                             -->
                             <?php
                             //実験 - 失敗
-                            /*if (isset($_SESSION['user'])) {
+                            if (isset($_SESSION['user'])) {
                                 date_default_timezone_set('Asia/Tokyo');
-                                $stmt = $pdo->prepare('INSERT INTO tweets values(?, ?, ?, ?, ?, ?)');
-                                if ($stmt->execute([null, $_REQUEST['new-tweet'], $_SESSION['user']['username'], $_SESSION['user']['profilepic'], date('Y-m-d H:i:s'), $_SESSION['user']['id']])) {
-                                    header('Location: ./index.php');
-                                    exit();
-                                } else {
-                                    echo 'Something went wrong<br>';
-                                    print_r ($stmt -> errorInfo());
+                                if (strlen($_REQUEST['new-tweet'])) {
+                                    $stmt = $pdo->prepare('INSERT INTO tweets values(?, ?, ?, ?, ?, ?)');
+                                    if ($stmt->execute([null, $_REQUEST['new-tweet'], $_SESSION['user']['username'], $_SESSION['user']['profilepic'], date('Y-m-d H:i:s'), $_SESSION['user']['id']])) {
+                                        /*header('Location: ./index.php');
+                                        exit();*/
+                                    } else {
+                                        echo 'Something went wrong<br>';
+                                        print_r ($stmt -> errorInfo());
                                 }
+                            }
                             } else {
                                 echo '<script>alert("You are not logged in");</script>';
                             }
                             if ($_SERVER['REQUEST_METHOD'] == "POST") {
-                                header('Location: ./index.php');
+                                header('Location:./index.php');
                                 exit();
-                            }*/
+                            }
                             // ここから下はあとでコメントアウト解除
+                            /*
                             if ($_SERVER['REQUEST_METHOD'] == "POST") {
                                 if (isset($_SESSION['user'])) {
                                     date_default_timezone_set('Asia/Tokyo');
@@ -149,6 +152,7 @@
                                     echo '<script>alert("You are not logged in");</script>';
                                 }
                             }
+                            */
                             ?>
                         </div>
                 </div>
