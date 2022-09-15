@@ -151,12 +151,14 @@
                                     if (strlen($_REQUEST['new-tweet'])) {
                                         $stmt = $pdo->prepare('INSERT INTO tweets values(?, ?, ?, ?, ?, ?)');
                                         if ($stmt->execute([null, $_REQUEST['new-tweet'], $_SESSION['user']['username'], $_SESSION['user']['profilepic'], date('Y-m-d H:i:s'), $_SESSION['user']['id']])) {
-                                            header('Location:./index.php');
-                                            exit();
+                                            //header('Location:./index.php');
+                                            //exit();
                                         } else {
                                             echo 'Something went wrong<br>';
                                             print_r ($stmt -> errorInfo());
                                         }
+                                        header('Location:./index.php');
+                                        exit();
                                     } else {
                                         echo '<script>alert("Your tweet has not been entered yet.")</script>';
                                 }
