@@ -17,16 +17,20 @@
                 <a class="headerlinks" href="">Private Messages</a>
             </div>
             <div class="search">
+                <div class="breakwater1">
                 <?php
-                if (isset($_SESSION['user'])) {
-                    echo 'Signed in as <a href="./signout.php">', $_SESSION['user']['username'], '</a>';
-                } else {
-                    echo '<a href="./signin.php">Sign In</a>';
-                }
+                    if (isset($_SESSION['user'])) {
+                        echo 'Signed in as <a href="./signout.php">', $_SESSION['user']['username'], '</a>';
+                    } else {
+                        echo '<a href="./signin.php">Sign In</a>';
+                    }
                 ?>
+                </div>
                 <!-- Signed in as <a href="">Example</a> -->
-                <input type="text" name="search" placeholder="Search">
-                <input type="submit" value="Search">
+                <form action="search-output.php" method="post" class="headersearch">
+                    <input type="text" name="search" placeholder="Search">
+                    <input type="submit" value="Search">
+                </form>
             </div>
         </header>
         <main>
@@ -54,6 +58,10 @@
                     </div>
                     <div class="moreinfo">
                         <?php
+                        if (isset($_SESSION['user'])) {
+                            //echo '<a href="./profile.php">Your profile</a>';
+                            // CSSをあとで作成
+                        }
                         // Tweet数カウント 一時非表示
                         //if (isset($_SESSION['user'])) {
                         //    $sql = 'SELECT COUNT(*) as cnt FROM userdata';
@@ -79,11 +87,13 @@
                         <div class="timeline">
                             <?php
                             $timeline = $pdo->query('SELECT * FROM tweets');
+                            //$timelinerev = array_reverse($timeline);
                             foreach ($timeline as $row) {
                                 echo '<div class="tweet">';
+                                echo '<a href="./user/'.$row['uploader'].'.php">';
                                 echo '<img src="', $row['avatar'], '" class="avatar1">';
                                 echo '<div class="cont">';
-                                echo '<b class="username">', $row['uploader'], '</b>';
+                                echo '<b class="username">', $row['uploader'], '</b></a>';
                                 echo '<p class="contents1">', $row['contents'], '</p>';
                                 echo '<p class="time">', $row['time'], '</p>';
                                 echo '</div>';
@@ -112,13 +122,18 @@
                             -->
                             <?php
                             //実験 - 失敗
+                            /*
                             if (isset($_SESSION['user'])) {
                                 date_default_timezone_set('Asia/Tokyo');
                                 if (strlen($_REQUEST['new-tweet'])) {
                                     $stmt = $pdo->prepare('INSERT INTO tweets values(?, ?, ?, ?, ?, ?)');
                                     if ($stmt->execute([null, $_REQUEST['new-tweet'], $_SESSION['user']['username'], $_SESSION['user']['profilepic'], date('Y-m-d H:i:s'), $_SESSION['user']['id']])) {
-                                        /*header('Location: ./index.php');
-                                        exit();*/
+                                        header('Location: ./index.php');
+                                        exit();
+                                        if ($_SERVER['REQUEST_METHOD'] == "POST") {
+                                            header('Location:./index.php');
+                                            exit();
+                                        }
                                     } else {
                                         echo 'Something went wrong<br>';
                                         print_r ($stmt -> errorInfo());
@@ -126,20 +141,17 @@
                             }
                             } else {
                                 echo '<script>alert("You are not logged in");</script>';
-                            }
-                            if ($_SERVER['REQUEST_METHOD'] == "POST") {
-                                header('Location:./index.php');
-                                exit();
-                            }
+                            }*/
+                            // 実験　ここまで
                             // ここから下はあとでコメントアウト解除
-                            /*
+                            
                             if ($_SERVER['REQUEST_METHOD'] == "POST") {
                                 if (isset($_SESSION['user'])) {
                                     date_default_timezone_set('Asia/Tokyo');
                                     if (strlen($_REQUEST['new-tweet'])) {
                                         $stmt = $pdo->prepare('INSERT INTO tweets values(?, ?, ?, ?, ?, ?)');
                                         if ($stmt->execute([null, $_REQUEST['new-tweet'], $_SESSION['user']['username'], $_SESSION['user']['profilepic'], date('Y-m-d H:i:s'), $_SESSION['user']['id']])) {
-                                            header('Location: ./index.php');
+                                            header('Location:./index.php');
                                             exit();
                                         } else {
                                             echo 'Something went wrong<br>';
@@ -152,7 +164,7 @@
                                     echo '<script>alert("You are not logged in");</script>';
                                 }
                             }
-                            */
+                            
                             ?>
                         </div>
                 </div>

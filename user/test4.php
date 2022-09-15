@@ -5,7 +5,7 @@
         <link rel="stylesheet" href="../stylesheet.css">
     </head>
     <body>
-    <header>
+        <header>
             <div class="logo">
                 <h2>Prototype</h2>
                 <a class="headerlinks" href="../index.php">Home</a>
@@ -13,21 +13,17 @@
                 <a class="headerlinks" href="">Private Messages</a>
             </div>
             <div class="search">
-                <div class="breakwater1">
                 <?php
-                    session_start();
-                    if (isset($_SESSION['user'])) {
-                        echo 'Signed in as <a href="../signout.php">', $_SESSION['user']['username'], '</a>';
-                    } else {
-                        echo '<a href="./signin.php">Sign In</a>';
-                    }
+                session_start();
+                if (isset($_SESSION['user'])) {
+                    echo 'Signed in as <a href="../signout.php">', $_SESSION['user']['username'], '</a>';
+                } else {
+                    echo '<a href="../signin.php">Sign In</a>';
+                }
                 ?>
-                </div>
                 <!-- Signed in as <a href="">Example</a> -->
-                <form action="search-output.php" method="post" class="headersearch">
-                    <input type="text" name="search" placeholder="Search">
-                    <input type="submit" value="Search">
-                </form>
+                <input type="text" name="search" placeholder="Search">
+                <input type="submit" value="Search">
             </div>
         </header>
         <main>
@@ -35,8 +31,8 @@
                 <div class="information">
                     <p class="titletext">Account Info</p>
                     <div class="account-info">
-                        <img src="insert_avatar_here" class="prof">
-                        <p class="user">insert_username_here</p>
+                        <img src="../avatar/phpf9WdDR.png" class="prof">
+                        <p class="user">test4</p>
                     </div>
                     <div class="moreinfo">
                         <!--

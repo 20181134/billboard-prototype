@@ -31,9 +31,12 @@
                     <p>Sign In</p>
                     <form action="signin-output.php">
                         Username: <input type="text" name="username"><br>
-                        Password: <input type="text" name="password"><br>
+                        Password: <input type="password" name="password"><br>
                         <input type="submit" value="Sign In">
                     </form>
+                    <div class="account-creation">
+                        <p>Don't have an account? <a href="./createaccount.php">Create a new account today!</a></p>
+                    </div>
                 </div>
             </div>
         </main>

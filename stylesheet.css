@@ -2,6 +2,14 @@ body {
     margin:0px;
     font-family:helvetica;
 }
+.search {
+    display:flex;
+    align-items:center;
+}
+.headersearch {
+    margin:0px;
+    margin-left:5px;
+}
 header {
     display:flex;
     justify-content:space-between;

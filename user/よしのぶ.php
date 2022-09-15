@@ -35,8 +35,8 @@
                 <div class="information">
                     <p class="titletext">Account Info</p>
                     <div class="account-info">
-                        <img src="insert_avatar_here" class="prof">
-                        <p class="user">insert_username_here</p>
+                        <img src="../avatar/phpKIeEMi.png" class="prof">
+                        <p class="user">よしのぶ</p>
                     </div>
                     <div class="moreinfo">
                         <!--
