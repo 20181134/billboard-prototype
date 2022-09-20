@@ -19,7 +19,7 @@
                     if (isset($_SESSION['user'])) {
                         echo 'Signed in as <a href="../signout.php">', $_SESSION['user']['username'], '</a>';
                     } else {
-                        echo '<a href="./signin.php">Sign In</a>';
+                        echo '<a href="../signin.php">Sign In</a>';
                     }
                 ?>
                 </div>

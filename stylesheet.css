@@ -1,6 +1,6 @@
 body {
     margin:0px;
-    font-family:helvetica;
+    font-family:'メイリオ', 'Meiryo', sans-serif;
 }
 .search {
     display:flex;
