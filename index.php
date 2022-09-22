@@ -80,7 +80,7 @@
                 <div class="tl">
                     <p class="title2">What's Happening?</p>
                     <form action="" method="post">
-                        <textarea name="new-tweet"></textarea>
+                        <textarea name="new-tweet" id="text1"></textarea>
                         <input type="submit" value="tweet">
                     </form>
                     <hr class="division">
@@ -89,6 +89,7 @@
                             $timeline = $pdo->query('SELECT * FROM tweets');
                             //$timelinerev = array_reverse($timeline);
                             foreach ($timeline as $row) {
+                                echo '<div class="breakwater2">';
                                 echo '<div class="tweet">';
                                 echo '<a href="./user/'.$row['uploader'].'.php">';
                                 echo '<img src="', $row['avatar'], '" class="avatar1">';
@@ -96,7 +97,9 @@
                                 echo '<b class="username">', $row['uploader'], '</b></a>';
                                 echo '<p class="contents1">', $row['contents'], '</p>';
                                 echo '<p class="time">', $row['time'], '</p>';
-                                echo '</div>';
+                                echo '</div>';//cont
+                                echo '</div>';//tweet
+                                echo '<input type="submit" value="削除">';
                                 echo '</div>';
                                 echo '<hr class="division">';
                             }
@@ -172,6 +175,8 @@
                 </div>
             </div>
         </main>
-        <footer></footer>
+        <footer>
+            <h1>All</h1>
+        </footer>
     </body>
 </html>

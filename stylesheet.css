@@ -1,3 +1,7 @@
+/*{
+    border-radius: 999px;
+}*/
+
 body {
     margin:0px;
     font-family:'メイリオ', 'Meiryo', sans-serif;
@@ -16,6 +20,10 @@ header {
     align-items:center;
     background-color: aqua;
     height: 30px;
+    position: -webkit-sticky;
+    position:sticky;
+    top:0;
+    z-index: 100;
 }
 .logo h2 {
     margin-top:0px;
@@ -40,7 +48,9 @@ main {
     display:flex;
     justify-content:center;
     background-image: url(./img2.jpg);
-    height: 100%;
+    position:-webkit-sticky;
+    position:sticky;
+    top:0;
 }
 .contents {
     display:flex;
@@ -51,7 +61,7 @@ main {
 }
 .information {
     width: 30%;
-    height: 100%;
+    /*height: 100%;*/
     background-color: #c0e0ee;
 }
 .user {
@@ -61,6 +71,10 @@ main {
     width: 70%;
     background-color: white;
     padding:10px;
+}
+#text1{
+    height:100px;
+    
 }
 .prof {
     height:60px;
@@ -116,4 +130,17 @@ textarea {
 }
 .time {
     margin:0px;
+}
+.breakwater2 {
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+.breakwater2 input{
+    height: 50px;
+
+}
+footer{
+    z-index: 100;
+    background-color: aqua;
 }
