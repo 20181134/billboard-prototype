@@ -88,8 +88,8 @@
                     -->
                     <?php
                     $pdo = new PDO('mysql:host=localhost;dbname=tweet;charset=utf8;', 'admin', 'password');
-                    $stmt = $pdo->prepare('SELECT * FROM tweets where contents in (?)');
-                    if ($stmt->execute([$_REQUEST['search']])) {
+                    $stmt = $pdo->prepare("SELECT * FROM tweets where contents like '%".$_REQUEST['search']."%'");
+                    if ($stmt->execute()) {
                         //echo 'success';
                         foreach ($stmt as $row) {
                             echo '<div class="tweet">';

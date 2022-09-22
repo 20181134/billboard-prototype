@@ -21,10 +21,10 @@
             }
             header('Location:./index.php');
             exit();
-        } else {
+        } /*else {
             echo 'Username or password is incorrect.<br>';
             echo '<a href="./index.php">Back to home</a>';
-        }
+        }*/
         ?>
     </body>
 </html>

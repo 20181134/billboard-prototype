@@ -42,6 +42,7 @@
                     $user = file_get_contents('./profile.txt');
                     $user = str_replace('insert_avatar_here', '../'.$_SESSION['user']['profilepic'], $user);
                     $user = str_replace('insert_username_here', $_SESSION['user']['username'], $user);
+                    $user = str_replace('insert_userid_here', $_SESSION['user']['id'], $user);
                     file_put_contents('./user/'.$_SESSION['user']['username'].'.php', $user);
                     // ここまで
                 } else {

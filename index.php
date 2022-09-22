@@ -99,7 +99,9 @@
                                 echo '<p class="time">', $row['time'], '</p>';
                                 echo '</div>';//cont
                                 echo '</div>';//tweet
-                                echo '<input type="submit" value="削除">';
+                                //echo '<form action="" method="post"><input type="hidden" name="del" value="1">';
+                                echo '<input type="submit" value="Delete">';
+                                //echo '</form>';
                                 echo '</div>';
                                 echo '<hr class="division">';
                             }
@@ -169,7 +171,13 @@
                                     echo '<script>alert("You are not logged in");</script>';
                                 }
                             }
-                            
+                            // 削除 テスト
+                            /*
+                            $delete = $_REQUEST['delete'];
+                            if ($delete == 1) {
+                                $stmt->prepare('DELETE FROM tweets WHERE contents = ?');
+                                if ($stmt->execute([]))
+                            }*/
                             ?>
                         </div>
                 </div>

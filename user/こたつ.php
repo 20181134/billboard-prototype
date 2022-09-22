@@ -35,8 +35,8 @@
                 <div class="information">
                     <p class="titletext">Account Info</p>
                     <div class="account-info">
-                        <img src="insert_avatar_here" class="prof">
-                        <p class="user">insert_username_here</p>
+                        <img src="../avatar/php2hi31o.png" class="prof">
+                        <p class="user">こたつ</p>
                     </div>
                     <div class="moreinfo">
                         <!--
@@ -70,7 +70,7 @@
                         <hr class="division">
                         -->
                         <?php
-                        $userid = 'insert_userid_here';
+                        $userid = '15';
                         /*
                         $path = __FILE__;
                         //echo basenmae($path);

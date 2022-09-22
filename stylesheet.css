@@ -5,6 +5,12 @@
 body {
     margin:0px;
     font-family:'メイリオ', 'Meiryo', sans-serif;
+    background-image: url(./img2.jpg);
+    background-repeat:no-repeat;
+    background-attachment:fixed;
+    /*position:-webkit-sticky;
+    position:sticky;
+    top:0;*/
 }
 .search {
     display:flex;
@@ -47,10 +53,6 @@ header {
 main {
     display:flex;
     justify-content:center;
-    background-image: url(./img2.jpg);
-    position:-webkit-sticky;
-    position:sticky;
-    top:0;
 }
 .contents {
     display:flex;
@@ -137,7 +139,7 @@ textarea {
     align-items:center;
 }
 .breakwater2 input{
-    height: 50px;
+    height: 25px;
 
 }
 footer{
