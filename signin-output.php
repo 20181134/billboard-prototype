@@ -19,12 +19,16 @@
                     'profilelink'=>$row['profilepage']
                 ];
             }
+        }
+        if (isset($_SESSION['user'])) {
             header('Location:./index.php');
             exit();
-        } /*else {
-            echo 'Username or password is incorrect.<br>';
-            echo '<a href="./index.php">Back to home</a>';
-        }*/
+        } else {
+            require 'require1.php';
+            echo 'Username or password is incorrect<br>';
+            echo '<a href="./index.php">Back to Home</a>';
+        }
+            require 'require2.php';
         ?>
     </body>
 </html>

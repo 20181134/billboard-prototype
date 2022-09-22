@@ -93,9 +93,11 @@
                         //echo 'success';
                         foreach ($stmt as $row) {
                             echo '<div class="tweet">';
+                            echo '<a href="./user/'.$row['uploader'].'.php">';
                             echo '<img src="'.$row['avatar'].'" class="avatar1">';
                             echo '<div class="cont">';
                             echo '<b class="username">'.$row['uploader'].'</b>';
+                            echo '</a>';
                             echo '<p class="contents1">'.$row['contents'].'</p>';
                             echo '<p class="time">'.$row['time'].'</p>';
                             echo '</div>';
