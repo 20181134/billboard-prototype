@@ -145,31 +145,6 @@
                             </div>
                             -->
                             <?php
-                            //実験 - 失敗
-                            /*
-                            if (isset($_SESSION['user'])) {
-                                date_default_timezone_set('Asia/Tokyo');
-                                if (strlen($_REQUEST['new-tweet'])) {
-                                    $stmt = $pdo->prepare('INSERT INTO tweets values(?, ?, ?, ?, ?, ?)');
-                                    if ($stmt->execute([null, $_REQUEST['new-tweet'], $_SESSION['user']['username'], $_SESSION['user']['profilepic'], date('Y-m-d H:i:s'), $_SESSION['user']['id']])) {
-                                        header('Location: ./index.php');
-                                        exit();
-                                        if ($_SERVER['REQUEST_METHOD'] == "POST") {
-                                            header('Location:./index.php');
-                                            exit();
-                                        }
-                                    } else {
-                                        echo 'Something went wrong<br>';
-                                        print_r ($stmt -> errorInfo());
-                                }
-                            }
-                            } else {
-                                echo '<script>alert("You are not logged in");</script>';
-                            }*/
-                            // 実験　ここまで
-                            // ここから下はあとでコメントアウト解除
-                            
-                            
                             // 削除 テスト
                             /*
                             $delete = $_REQUEST['delete'];
