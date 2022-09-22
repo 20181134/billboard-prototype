@@ -105,7 +105,7 @@
                     <hr class="division">
                         <div class="timeline">
                             <?php
-                            $timeline = $pdo->query('SELECT * FROM tweets');
+                            $timeline = $pdo->query('SELECT * FROM tweets ORDER BY id DESC');
                             //$timelinerev = array_reverse($timeline);
                             foreach ($timeline as $row) {
                                 echo '<div class="breakwater2">';
