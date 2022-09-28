@@ -35,8 +35,8 @@
                 <div class="information">
                     <p class="titletext">Account Info</p>
                     <div class="account-info">
-                        <img src="../avatar/php9lHVeX.png" class="prof">
-                        <p class="user">test10</p>
+                        <img src="../avatar/phpaT3XjA.png" class="prof">
+                        <p class="user">duplication-test</p>
                     </div>
                     <div class="moreinfo">
                         <!--
@@ -70,7 +70,7 @@
                         <hr class="division">
                         -->
                         <?php
-                        $userid = '23';
+                        $userid = '21';
                         /*
                         $path = __FILE__;
                         //echo basenmae($path);

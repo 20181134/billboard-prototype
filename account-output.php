@@ -10,15 +10,17 @@
         unset ($_SESSION['user']);
         $pdo = new PDO('mysql:host=localhost;dbname=tweet;charset=utf8', 'admin', 'password');
         // ここからテスト
-        $check = $pdo->prepare('SELECT COUNT(*) AS ck FROM userdata where username=?');
-        if ($check->execute([$_REQUEST['username']])) {
-            if ($row['ck'] != 0) {
-                echo 'Username has already taken'; 
+        $check = $pdo->prepare('SELECT * FROM userdata where username=:user');
+        $check -> bindValue(':user', $_REQUEST['username']);
+        if ($check->execute()) {
+            if ($check != null) {
+                echo 'Username has already taken<br>';
+                echo '<a href="./index">Back to Home</a>';
             } else {
-                if (is_uploaded_file['avatar']['tmp_name']) {
+                if (is_uploaded_file($_FILES['avatar']['tmp_name'])) {
                     if (!file_exists('avatar')) {
                     mkdir('avatar');
-                }
+                    }
                 $file = 'avatar/'.basename($_FILES['avatar']['tmp_name']).'.png';
                 if (move_uploaded_file($_FILES['avatar']['tmp_name'], $file)) {
                     $stmt = $pdo->prepare('INSERT INTO userdata values(?, ?, ?, ?, ?)');
@@ -52,12 +54,17 @@
                     header('Location: ./index.php');
                     exit();
                 } else {
-                    echo 'Something went wrong';
+                    echo 'Something went wrong<br>';
+                    echo $file;
+                    echo '<br><a href="./index.php">Back</a>';
                 }
             } else {
-                echo 'Select an avatar';
+                echo 'Select an avatar<br>';
+                echo $_FILES['avatar']['tmp_name'].'is not an uploaded file';
             }
             }
+        } else {
+            print_r ($check -> errorInfo());
         }
         ?>
     </body>

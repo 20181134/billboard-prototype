@@ -119,7 +119,9 @@
                                 echo '</div>';//cont
                                 echo '</div>';//tweet
                                 //echo '<form action="" method="post"><input type="hidden" name="del" value="1">';
+                                if ($_SESSION['user']['id'] == $row['userid']) {
                                 echo '<input type="submit" value="Delete">';
+                                }
                                 //echo '</form>';
                                 echo '</div>';
                                 echo '<hr class="division">';
