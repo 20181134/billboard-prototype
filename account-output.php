@@ -13,9 +13,10 @@
         $check = $pdo->prepare('SELECT * FROM userdata where username=:user');
         $check -> bindValue(':user', $_REQUEST['username']);
         if ($check->execute()) {
-            if ($check != null) {
+            if ($data = $check -> fetch(PDO::FETCH_ASSOC)) {
                 echo 'Username has already taken<br>';
-                echo '<a href="./index">Back to Home</a>';
+                echo '<a href="./index">Back to Home</a><br>';
+                //var_dump($data);
             } else {
                 if (is_uploaded_file($_FILES['avatar']['tmp_name'])) {
                     if (!file_exists('avatar')) {
