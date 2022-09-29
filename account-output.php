@@ -14,8 +14,10 @@
         $check -> bindValue(':user', $_REQUEST['username']);
         if ($check->execute()) {
             if ($data = $check -> fetch(PDO::FETCH_ASSOC)) {
+                require 'require1.php';
                 echo 'Username has already taken<br>';
-                echo '<a href="./index">Back to Home</a><br>';
+                echo '<a href="./index.php">Back to Home</a><br>';
+                require 'require2.php';
                 //var_dump($data);
             } else {
                 if (is_uploaded_file($_FILES['avatar']['tmp_name'])) {

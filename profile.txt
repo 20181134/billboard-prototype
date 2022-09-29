@@ -94,7 +94,7 @@
                             print_r ($stmt -> errorInfo());
                         }*/
                         $pdo = new PDO('mysql:host=localhost;dbname=tweet;charset=utf8', 'admin', 'password');
-                        $stmt = $pdo->prepare('SELECT * FROM tweets WHERE userid = ?');
+                        $stmt = $pdo->prepare('SELECT * FROM tweets WHERE userid = ? ORDER BY id DESC');
                         if ($stmt->execute([$userid])) {
                             foreach ($stmt as $row) {
                                 echo '<div class="tweet">';

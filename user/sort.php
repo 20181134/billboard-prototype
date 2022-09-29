@@ -19,7 +19,7 @@
                     if (isset($_SESSION['user'])) {
                         echo 'Signed in as <a href="../signout.php">', $_SESSION['user']['username'], '</a>';
                     } else {
-                        echo '<a href="./signin.php">Sign In</a>';
+                        echo '<a href="../signin.php">Sign In</a>';
                     }
                 ?>
                 </div>
@@ -35,8 +35,8 @@
                 <div class="information">
                     <p class="titletext">Account Info</p>
                     <div class="account-info">
-                        <img src="../avatar/phpXUmcCr.png" class="prof">
-                        <p class="user">kent</p>
+                        <img src="../avatar/phpDoQPYf.png" class="prof">
+                        <p class="user">sort</p>
                     </div>
                     <div class="moreinfo">
                         <!--
@@ -70,12 +70,14 @@
                         <hr class="division">
                         -->
                         <?php
+                        $userid = '25';
+                        /*
                         $path = __FILE__;
                         //echo basenmae($path);
                         $path2 = basename($path);
                         $path2 = str_replace('.php', '', $path2);
                         $pdo = new PDO('mysql:host=localhost;dbname=tweet;charset=utf8', 'admin', 'password');
-                        $stmt = $pdo->prepare('SELECT * FROM tweets where uploader=? ORDER BY id DESC');
+                        $stmt = $pdo->prepare('SELECT * FROM tweets where uploader=?');
                         if ($stmt->execute([$path2])) {
                             foreach ($stmt as $row) {
                                 echo '<div class="tweet">';
@@ -90,6 +92,21 @@
                             }
                         } else {
                             print_r ($stmt -> errorInfo());
+                        }*/
+                        $pdo = new PDO('mysql:host=localhost;dbname=tweet;charset=utf8', 'admin', 'password');
+                        $stmt = $pdo->prepare('SELECT * FROM tweets WHERE userid = ? ORDER BY id DESC');
+                        if ($stmt->execute([$userid])) {
+                            foreach ($stmt as $row) {
+                                echo '<div class="tweet">';
+                                echo '<img class="avatar1" src="../', $row['avatar'], '">';
+                                echo '<div class="cont">';
+                                echo '<b class="username">', $row['uploader'], '</b>';
+                                echo '<p class="contents1">', $row['contents'], '</p>';
+                                echo '<p class="time">', $row['time'], '</p>';
+                                echo '</div>';
+                                echo '</div>';
+                                echo '<hr class="division">';
+                            }
                         }
                         ?>
                     </div>
