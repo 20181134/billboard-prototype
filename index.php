@@ -25,6 +25,16 @@
                 echo '<script>alert("You are not logged in");</script>';
             }
         }
+        // 削除機能
+        if (isset($_POST['del'])) {
+            $del = $pdo->prepare('DELETE FROM tweets WHERE id = :id');
+            $del -> bindValue(':id', $_REQUEST['del']);
+            if ($del -> execute()) {
+                header('Location:./index.php');
+            } else {
+                echo 'Could not delete your tweet.';
+            }
+        }
         ?>
     </head>
     <body>
@@ -118,11 +128,11 @@
                                 echo '<p class="time">', $row['time'], '</p>';
                                 echo '</div>';//cont
                                 echo '</div>';//tweet
-                                //echo '<form action="" method="post"><input type="hidden" name="del" value="1">';
+                                echo '<form action="" method="post"><input type="hidden" name="del" value='.$row['id'].'>';
                                 if ($_SESSION['user']['id'] == $row['userid']) {
                                 echo '<input type="submit" value="Delete">';
                                 }
-                                //echo '</form>';
+                                echo '</form>';
                                 echo '</div>';
                                 echo '<hr class="division">';
                             }
