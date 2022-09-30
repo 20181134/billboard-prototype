@@ -156,15 +156,6 @@
                                 </div>
                             </div>
                             -->
-                            <?php
-                            // 削除 テスト
-                            /*
-                            $delete = $_REQUEST['delete'];
-                            if ($delete == 1) {
-                                $stmt->prepare('DELETE FROM tweets WHERE contents = ?');
-                                if ($stmt->execute([]))
-                            }*/
-                            ?>
                         </div>
                 </div>
             </div>
