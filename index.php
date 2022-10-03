@@ -115,8 +115,72 @@
                     <hr class="division">
                         <div class="timeline">
                             <?php
+                            // ページング処理のテスト ここから
+                            /*
+                            if (!isset($_GET['page'])) {
+                                $_GET['page'] = 1;
+                            } else {
+                                $now = $_GET['page'];
+                            }
+                            $count = $pdo->query('SELECT COUNT(*) FROM tweets');
+                            foreach ($count as $row) {
+                                $num = $row[0];
+                                echo $row[0];
+                            }
+                            echo $num;
+                            $max_page = ceil($num / 10);
+                            echo $max_page;
+                            if (!isset($_GET['page'])) {
+                                $_GET['page'] = 1;
+                            } else {
+                                $now = $_GET['page'];
+                                echo 'get';
+                            }
+
+                            $disp_start = $num - 10 * ($now - 1);
+                            echo $disp_start;
+                            $disp_end = $num - 10 * $now;
+                            echo $disp_end;
+                            echo 'hello';
+                            $disp = $pdo->query('SELECT * FROM tweets WHERE id BETWEEN :st AND :en');
+                            $disp -> bindValue(':st', $disp_start);
+                            $disp -> bindValue(':en', $disp_end);
+                            if ($disp->execute()) {
+                                echo 'success!';
+                            foreach ($disp as $row) {
+                                echo '<div class="breakwater2">';
+                                echo '<div class="tweet">';
+                                echo '<a href="./user/'.$row['uploader'].'.php">';
+                                echo '<img src="', $row['avatar'], '" class="avatar1">';
+                                echo '<div class="cont">';
+                                echo '<b class="username">', $row['uploader'], '</b></a>';
+                                echo '<p class="contents1">', $row['contents'], '</p>';
+                                echo '<p class="time">', $row['time'], '</p>';
+                                echo '</div>';//cont
+                                echo '</div>';//tweet
+                                echo '<form action="" method="post"><input type="hidden" name="del" value='.$row['id'].'>';
+                                if ($_SESSION['user']['id'] == $row['userid']) {
+                                echo '<input type="submit" value="Delete">';
+                                }
+                                echo '</form>';
+                                echo '</div>';
+                                echo '<hr class="division">';
+                            }
+                            } else {
+                                echo 'failure';
+                                print_r ($disp -> errorInfo());
+                            }
+                            for ($i = 1; $i <= $max_page; $i++) {
+                                if ($i == $now) {
+                                    echo $now;
+                                } else {
+                                    echo '<a href="./index.php?page='.$i.'">'.$i.'</a>';
+                                }
+                            }
+                            */
+                            // ページング処理のテスト ここまで
+                            // 以下コメント解除
                             $timeline = $pdo->query('SELECT * FROM tweets ORDER BY id DESC');
-                            //$timelinerev = array_reverse($timeline);
                             foreach ($timeline as $row) {
                                 echo '<div class="breakwater2">';
                                 echo '<div class="tweet">';
