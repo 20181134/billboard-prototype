@@ -136,15 +136,15 @@
                                 $now = $_GET['page'];
                                 echo 'get';
                             }
-
                             $disp_start = $num - 10 * ($now - 1);
                             echo $disp_start;
                             $disp_end = $num - 10 * $now;
                             echo $disp_end;
                             echo 'hello';
-                            $disp = $pdo->query('SELECT * FROM tweets WHERE id BETWEEN :st AND :en');
-                            $disp -> bindValue(':st', $disp_start);
-                            $disp -> bindValue(':en', $disp_end);
+                            $disp = $pdo->prepare('SELECT * FROM tweets ORDER BY id DESC LIMIT 10 OFFSET 52');
+                            echo $disp_start;
+                            //$disp -> bindValue(':st', $disp_start);
+                            //$disp -> bindValue(':en', $disp_end);
                             if ($disp->execute()) {
                                 echo 'success!';
                             foreach ($disp as $row) {
@@ -180,6 +180,7 @@
                             */
                             // ページング処理のテスト ここまで
                             // 以下コメント解除
+                            
                             $timeline = $pdo->query('SELECT * FROM tweets ORDER BY id DESC');
                             foreach ($timeline as $row) {
                                 echo '<div class="breakwater2">';
@@ -200,6 +201,7 @@
                                 echo '</div>';
                                 echo '<hr class="division">';
                             }
+                            
                             ?>
                             <!--
                             <div class="tweet">
