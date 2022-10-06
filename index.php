@@ -117,34 +117,29 @@
                             <?php
                             // ページング処理のテスト ここから
                             /*
-                            if (!isset($_GET['page'])) {
-                                $_GET['page'] = 1;
-                            } else {
-                                $now = $_GET['page'];
-                            }
                             $count = $pdo->query('SELECT COUNT(*) FROM tweets');
                             foreach ($count as $row) {
                                 $num = $row[0];
-                                echo $row[0];
+                                echo 'count:'.$row[0].'<br>';
                             }
-                            echo $num;
+                            echo 'num value: '.$num.'<br>';
                             $max_page = ceil($num / 10);
-                            echo $max_page;
+                            echo 'page: '.$max_page.'<br>';
                             if (!isset($_GET['page'])) {
                                 $_GET['page'] = 1;
                             } else {
                                 $now = $_GET['page'];
-                                echo 'get';
+                                echo '$_GET has been set successfully<br>';
                             }
                             $disp_start = $num - 10 * ($now - 1);
-                            echo $disp_start;
+                            echo 'disp_start value: '.$disp_start.'<br>';
                             $disp_end = $num - 10 * $now;
-                            echo $disp_end;
-                            echo 'hello';
-                            $disp = $pdo->prepare('SELECT * FROM tweets ORDER BY id DESC LIMIT 10 OFFSET 52');
-                            echo $disp_start;
+                            $disp_end_int = (int)$disp_end;
+                            var_dump($disp_end_int);
+                            echo '<br>';
+                            $disp = $pdo->prepare('SELECT * FROM tweets ORDER BY id DESC LIMIT 10 OFFSET :en');
                             //$disp -> bindValue(':st', $disp_start);
-                            //$disp -> bindValue(':en', $disp_end);
+                            $disp -> bindValue(':en', $disp_end_int);
                             if ($disp->execute()) {
                                 echo 'success!';
                             foreach ($disp as $row) {
@@ -177,6 +172,7 @@
                                     echo '<a href="./index.php?page='.$i.'">'.$i.'</a>';
                                 }
                             }
+                            
                             */
                             // ページング処理のテスト ここまで
                             // 以下コメント解除
