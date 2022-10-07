@@ -139,7 +139,7 @@
                             echo '<br>';
                             $disp = $pdo->prepare('SELECT * FROM tweets ORDER BY id DESC LIMIT 10 OFFSET :en');
                             //$disp -> bindValue(':st', $disp_start);
-                            $disp -> bindValue(':en', $disp_end_int);
+                            $disp -> bindValue(':en', $disp_end_int, PDO::PARAM_INT);
                             if ($disp->execute()) {
                                 echo 'success!';
                             foreach ($disp as $row) {
@@ -172,8 +172,8 @@
                                     echo '<a href="./index.php?page='.$i.'">'.$i.'</a>';
                                 }
                             }
-                            
                             */
+                            
                             // ページング処理のテスト ここまで
                             // 以下コメント解除
                             
